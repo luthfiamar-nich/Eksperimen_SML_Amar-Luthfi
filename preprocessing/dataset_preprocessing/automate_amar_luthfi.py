@@ -57,7 +57,7 @@ def run_preprocessing(input_path, output_dir):
     categorical_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='most_frequent')),
         # Menggunakan sparse_output=False saat konversi DataFrame dengan scikit-learn (safe)
-        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse=False))
+        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
     ])
 
     preprocessor = ColumnTransformer(transformers=[
@@ -89,6 +89,6 @@ if __name__ == "__main__":
     INPUT_FILE = "dataset_raw/credit_risk_dataset.csv"
 
     # Menyimpan Dataset hasil Presprocessing
-    OUTPUT_DIRECTORY = "preprocessing/namadataset_preprocessing"
+    OUTPUT_DIRECTORY = "dataset_preprocessing"
 
     run_preprocessing(INPUT_FILE, OUTPUT_DIRECTORY)
